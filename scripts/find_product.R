@@ -1,6 +1,17 @@
+if (!require("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
+
+BiocManager::install("GenomicRanges")
+
+if (!require("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
+
+BiocManager::install("rtracklayer")
+
 library(rtracklayer)
 require(plyr)
 require(dostats)
+library(readr)
 
 files <- list.files("C:/VL_Cobetia/data/NCBI/gtf", pattern = ".gtf", full.names=TRUE)
 strain <- list.files("C:/VL_Cobetia/data/NCBI/gtf", pattern = ".gtf")
@@ -9,6 +20,8 @@ df$strain <- NA
 df$i <- NA
 rez_df <- df[0,c("i","strain","seqnames", "start", "end", "gene_id", "transcript_id", "product", "protein_id", "gene")]
 i <- 1
+
+
 for (f in files) {
   df  <- data.frame(import(f))
   df2 <- df[grepl("alkaline", df$product),]
@@ -25,5 +38,5 @@ for (f in files) {
   }
 }
 write.table(rez_df[,c("i","strain","seqnames", "start", "end", "gene_id", "transcript_id", "product", "protein_id", "gene")],
-  file = "C:/VL_Cobetia/find_product_rez.tbl", row.names = F, sep = "\t")
+  file = "./find_product_rez.tbl", row.names = F, sep = "\t")
 
