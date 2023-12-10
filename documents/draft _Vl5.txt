@@ -1,0 +1,13 @@
+gapseq (https://github.com/jotech/gapseq) - поиск метаболических путей (неудачно)
+blast (global blast, blastn и tblastn), лучше написать просто - blast, чтобы не усложнять. Использовался для поиска белка KGA01942 в геномах штаммов.
+Chimera (https://github.com/tamascogustavo/chimera)  - поиск метаболических путей (неудачно)
+Clustal (https://www.ebi.ac.uk/Tools/msa/clustalo/) - мультивыравнивание, построение филогенетического дерева.
+iTOL (https://itol.embl.de/) - визуализация филогенетического дерева
+
+Дальше необязательно:
+Самостоятельно сделанные скрипты R (библеотеки: rtracklayer, readr, plyr, dostats, rtracklayer, sybil, data.table) - обработка табличных данных
+find_product.Rmd, marine_metagenomes.Rmd, marine_metagenomes_LOOP.Rmd - поиск продуктов метаболических реакций (использовался после gapseq, неудачно)
+gene_neighbor.R - поиск кластера в геномах, в окресности гена metG (который обычно рядом с KGA01942)
+Самостоятельно сделанные скрипты bash - автоматизация процессов
+for_blast.sh - автоматизация blast
+for_gapseq.sh - автоматизация gapseq (не привело к успеху)
