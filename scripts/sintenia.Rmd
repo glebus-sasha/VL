@@ -278,7 +278,7 @@ p
 
 ```
 Центрируем по ALP
-```{r fig.height=7, fig.width=10}
+```{r fig.height=5, fig.width=10}
 library(tidyverse)
 library(GenomicFeatures)
 library(ggbio)
@@ -320,16 +320,15 @@ centered_genes_list <- lapply(seq_along(gtf_files), function(i) {
 all_centered_genes <- bind_rows(centered_genes_list, .id = "file_id")
 
 # Изменение лейблов по вертикали
-gtf_files_labels <- gsub("_GCF_.*", "", basename(gtf_files))
+gtf_files_labels <- gsub("\\d+\\.", "", gsub("_GCF_.*", "", basename(gtf_files)))
 
 # Создание графика
 p <- ggplot() +
   geom_rect(data = all_centered_genes,
             aes(xmin = centered_start, xmax = centered_end, ymin = as.numeric(file_id) - 0.4, ymax = as.numeric(file_id) + 0.4, fill = gene),
-            alpha = 0.7) +
+            alpha = 1) +
   scale_y_continuous(breaks = seq_along(gtf_files), labels = gtf_files_labels) +
-  theme_minimal() +
-  labs(title = "Гены окрестности ALP")
+  theme_minimal()
 
 # Вывод графика
 p
@@ -337,7 +336,7 @@ p
 ```
 Увеличим окрестности в 5 раз
 
-```{r fig.height=7, fig.width=10}
+```{r fig.height=5, fig.width=10}
 library(tidyverse)
 library(GenomicFeatures)
 library(ggbio)
@@ -379,16 +378,15 @@ centered_genes_list <- lapply(seq_along(gtf_files), function(i) {
 all_centered_genes <- bind_rows(centered_genes_list, .id = "file_id")
 
 # Изменение лейблов по вертикали
-gtf_files_labels <- gsub("_GCF_.*", "", basename(gtf_files))
+gtf_files_labels <- gsub("\\d+\\.", "", gsub("_GCF_.*", "", basename(gtf_files)))
 
 # Создание графика
 p <- ggplot() +
   geom_rect(data = all_centered_genes,
             aes(xmin = centered_start, xmax = centered_end, ymin = as.numeric(file_id) - 0.4, ymax = as.numeric(file_id) + 0.4, fill = gene),
-            alpha = 0.7) +
+            alpha = 1) +
   scale_y_continuous(breaks = seq_along(gtf_files), labels = gtf_files_labels) +
-  theme_minimal() +
-  labs(title = "Гены окрестности ALP")
+  theme_minimal()
 
 # Вывод графика
 p
