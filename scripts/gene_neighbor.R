@@ -63,6 +63,6 @@ make_func <- function(path, gene_name, func = make_gene_neighbor_list){
   return(rez)
 }
 
-rez <- make_func(path = "C:/VL_Cobetia/data/NCBI/gtf", gene_name = "metG", func = make_gene_neighbor_list_with_products)
-write.table(rez, sep="\t", file = "C:/VL_Cobetia/n_gene_products.tbl", row.names = F)
+rez <- make_func(path = "C:/VL/data/GTF_files/", gene_name = "metG", func = make_gene_neighbor_list_with_products)
+#write.table(rez, sep="\t", file = "C:/VL_Cobetia/n_gene_products.tbl", row.names = F)
 
